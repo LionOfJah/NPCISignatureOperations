@@ -3,6 +3,7 @@ package com.icicibank.apimgmt.service.impl;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.security.KeyStore;
 import java.security.KeyStore.PrivateKeyEntry;
@@ -152,8 +153,10 @@ public class SignatureVerificationServiceImpl implements SignatureVerificationSe
 			char[] ketStrorePwdArray = "7layer".toCharArray();
 			
 			keyStoreInputStream 	 = new FileInputStream(keyStoreFile);
+			keyStoreFile.chars();
+			
 			ks.load(keyStoreInputStream, ketStrorePwdArray);
-
+			
 			String alias 	= null;
 			alias 		 	= (String) ks.aliases().nextElement();
 

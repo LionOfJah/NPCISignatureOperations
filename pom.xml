@@ -19,6 +19,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<start-class>com.icicibank.apimgmt.NpciSignatureVerifyApplication</start-class>
+		<tests.skip>true</tests.skip>
 	</properties>
 
 	<dependencies>
@@ -57,12 +58,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -71,6 +66,25 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>${build.sourceDirectory}</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>${tests.skip}</skipTests>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

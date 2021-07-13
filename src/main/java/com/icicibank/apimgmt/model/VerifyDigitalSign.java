@@ -27,6 +27,7 @@ public class VerifyDigitalSign {
   public VerifyDigitalSign(PublicKey publicKey) {
     LOGGER.info("Signature Library Version : 1.0.0");
     this.pubKey = publicKey;
+    LOGGER.info("public key "+pubKey.toString());
   }
   
   public boolean isXmlDigitalSignatureValid(Document document) throws SignatureMethodAlgo, DigestMethodAlgo, MarshalException, XMLSignatureException {
